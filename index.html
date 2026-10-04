@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interaktive Lernlandkarte zur Trinkwasserversorgung und Trinkwassergewinnung">
+  <title>Interaktive Lernlandkarte – Trinkwasser</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Interaktive Lernlandkarte</p>
+      <h1>Trinkwasserversorgung & Trinkwassergewinnung</h1>
+      <p>Vom Rohwasser bis zur Zapfstelle – mit Aufgaben in drei Schwierigkeitsgraden.</p>
+    </div>
+    <div class="progress-wrap" aria-label="Gesamtfortschritt">
+      <span id="progressText">0 %</span>
+      <div class="progress"><span id="progressBar"></span></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="poster-panel" aria-labelledby="posterHeading">
+      <div class="poster-copy">
+        <h2 id="posterHeading">Lernlandkarte</h2>
+        <p>Klicke auf einen Bereich der Grafik oder wähle unten ein Thema.</p>
+      </div>
+
+      <div class="poster-wrap">
+        <img src="assets/lernlandkarte.png" alt="Lernlandkarte zur Trinkwasserversorgung mit sechs Themenfeldern">
+        <button class="hotspot h1" data-section="1" aria-label="Zu Thema 1: Was ist Trinkwasser?">1</button>
+        <button class="hotspot h2" data-section="2" aria-label="Zu Thema 2: Trinkwassergewinnung">2</button>
+        <button class="hotspot h3" data-section="3" aria-label="Zu Thema 3: Wasseraufbereitung">3</button>
+        <button class="hotspot h4" data-section="4" aria-label="Zu Thema 4: Weg des Trinkwassers">4</button>
+        <button class="hotspot h5" data-section="5" aria-label="Zu Thema 5: Anforderungen und Schutz">5</button>
+        <button class="hotspot h6" data-section="6" aria-label="Zu Thema 6: Praxis und Kompetenzcheck">6</button>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="Aufgabenauswahl">
+      <div>
+        <label for="sectionSelect">Thema</label>
+        <select id="sectionSelect"></select>
+      </div>
+      <div>
+        <label for="difficultySelect">Schwierigkeit</label>
+        <select id="difficultySelect">
+          <option value="easy">🟢 Leicht</option>
+          <option value="medium">🟠 Mittel</option>
+          <option value="hard">🔴 Schwer</option>
+        </select>
+      </div>
+      <div class="button-row">
+        <button id="newTaskBtn" class="primary">Neue Aufgabe</button>
+        <button id="randomBtn">Zufallsaufgabe</button>
+        <button id="resetBtn" class="ghost">Fortschritt löschen</button>
+      </div>
+    </section>
+
+    <section id="topicCard" class="topic-card" aria-live="polite"></section>
+
+    <section class="task-shell">
+      <div class="task-head">
+        <div>
+          <span id="difficultyBadge" class="badge easy">Leicht</span>
+          <h2 id="taskTitle">Aufgabe</h2>
+          <p id="taskMeta"></p>
+        </div>
+        <div class="score-box">
+          <span>Punkte</span>
+          <strong id="score">0</strong>
+        </div>
+      </div>
+
+      <form id="taskForm">
+        <div id="taskBody"></div>
+        <div class="task-actions">
+          <button class="primary" type="submit">Antwort prüfen</button>
+          <button id="solutionBtn" type="button">Lösung anzeigen</button>
+          <button id="nextBtn" type="button">Nächste Aufgabe</button>
+        </div>
+      </form>
+      <div id="feedback" class="feedback" aria-live="polite"></div>
+      <div id="solution" class="solution" hidden></div>
+    </section>
+
+    <section class="stats">
+      <h2>Dein Lernstand</h2>
+      <div class="stat-grid">
+        <article><strong id="doneCount">0</strong><span>bearbeitet</span></article>
+        <article><strong id="correctCount">0</strong><span>richtig</span></article>
+        <article><strong id="streakCount">0</strong><span>Serie</span></article>
+        <article><strong id="levelCount">0</strong><span>Punkte</span></article>
+      </div>
+      <p class="hint">Der Fortschritt wird nur lokal in deinem Browser gespeichert.</p>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Merksatz:</strong> Trinkwasser muss sicher, sauber und jederzeit verfügbar sein.
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
